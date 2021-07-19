@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.zerock.mapper.TravelogMapper">
+	<select id="getList" resultType="org.zerock.domain.TravelogVO">
+		SELECT 
+		bno bno,
+		title title,
+		city city,
+		content content,
+		writer writer,
+		regdate regdate
+		FROM travelog ORDER BY bno DESC
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO travelog (title, city, content, writer)
+		VALUES (#{title}, #{city}, #{content}, #{writer})
+	</insert>
+	
+	<insert id="insertSelectKey" useGeneratedKeys="true" keyProperty="bno" keyColumn="bno">
+		INSERT INTO travelog (title, city, content, writer)
+		VALUES (#{title}, #{city}, #{content}, #{writer})
+	</insert>
+	
+	<select id="read" resultType="rog.zerock.domain.TravelogVO">
+		SELECT 
+		bno bno,
+		title title,
+		city city,
+		content content,
+		writer writer,
+		regdate regdate
+		FROM travelog
+		WHERE bno = #{bno}
+	</select>
+	
+	<delete id="delete">
+		DELETE FROM travelog WHERE bno = #{bno}
+	</delete>
+</mapper>
