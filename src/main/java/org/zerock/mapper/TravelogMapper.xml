@@ -6,12 +6,12 @@
 <mapper namespace="org.zerock.mapper.TravelogMapper">
 	<select id="getList" resultType="org.zerock.domain.TravelogVO">
 		SELECT 
-		bno bno,
-		title title,
-		city city,
-		content content,
-		writer writer,
-		regdate regdate
+			bno bno,
+			title title,
+			city city,
+			content content,
+			writer writer,
+			regdate regdate
 		FROM travelog ORDER BY bno DESC
 	</select>
 	
@@ -27,12 +27,12 @@
 	
 	<select id="read" resultType="rog.zerock.domain.TravelogVO">
 		SELECT 
-		bno bno,
-		title title,
-		city city,
-		content content,
-		writer writer,
-		regdate regdate
+			bno bno,
+			title title,
+			city city,
+			content content,
+			writer writer,
+			regdate regdate
 		FROM travelog
 		WHERE bno = #{bno}
 	</select>

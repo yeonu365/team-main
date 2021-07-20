@@ -13,5 +13,5 @@ public interface TravelogService {
 	public TravelogVO read(Long bno);
 	
 	public boolean delete(Long bno);
-	
+
 }

@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.TravelogVO;
 import org.zerock.service.TravelogService;
@@ -37,4 +38,25 @@ public class TravelogController {
 		rttr.addFlashAttribute("result", travelog.getBno());
 		return "redirect:/travelog/list";
 	}
+	
+	@GetMapping("/read")
+	public void read(@RequestParam("bno") Long bno, Model model) {
+		log.info("travelog/read method");
+		
+		TravelogVO vo = service.read(bno);
+		model.addAttribute("travelog", vo);
+	}
+	
+	@PostMapping("/delete")
+	public String delete(@RequestParam("bno") Long bno, RedirectAttributes rttr) {
+		boolean success = service.delete(bno);
+		if (success) {
+			rttr.addAttribute("result", "success");
+		}
+		return "redirect:/travelog/list";
+	}
+
+	
+	
+	
 }
