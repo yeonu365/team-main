@@ -22,11 +22,20 @@
 				<th>작성자</th>
 				<th>작성일</th>
 				<th>이용한곳</th>
-				
-				
-			</tr>	
+			</tr>
 		</thead>		
-	
+		<tbody>
+			<c:forEach items="${list }" var="travelog">
+			<tr>
+				<td>${travelog.bno }</td>
+				<td>${travelog.title }</td>
+				<td>${travelog.city }</td>
+				<td>${travelog.writer }</td>
+				<td>${travelog.regdate }</td>
+				<td>${travelog.company }</td>
+			</tr>
+			</c:forEach>
+		</tbody>
 	</table>
 </div>
 </body>

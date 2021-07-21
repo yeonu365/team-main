@@ -33,6 +33,7 @@ public class TravelogController {
 	
 	@PostMapping("/insert")
 	public String insert(TravelogVO travelog, RedirectAttributes rttr) {
+		log.info("travelog/insert executed");
 		service.insertSelectKey(travelog);
 		
 		rttr.addFlashAttribute("result", travelog.getBno());
@@ -49,6 +50,7 @@ public class TravelogController {
 	
 	@PostMapping("/delete")
 	public String delete(@RequestParam("bno") Long bno, RedirectAttributes rttr) {
+		log.info("travelog/delete executed");
 		boolean success = service.delete(bno);
 		if (success) {
 			rttr.addAttribute("result", "success");

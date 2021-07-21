@@ -11,18 +11,19 @@
 			city city,
 			content content,
 			writer writer,
-			regdate regdate
+			regdate regdate,
+			company company
 		FROM travelog ORDER BY bno DESC
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO travelog (title, city, content, writer)
-		VALUES (#{title}, #{city}, #{content}, #{writer})
+		INSERT INTO travelog (title, city, content, writer, company)
+		VALUES (#{title}, #{city}, #{content}, #{writer}, #{company})
 	</insert>
 	
 	<insert id="insertSelectKey" useGeneratedKeys="true" keyProperty="bno" keyColumn="bno">
-		INSERT INTO travelog (title, city, content, writer)
-		VALUES (#{title}, #{city}, #{content}, #{writer})
+		INSERT INTO travelog (title, city, content, writer, company)
+		VALUES (#{title}, #{city}, #{content}, #{writer}, #{company})
 	</insert>
 	
 	<select id="read" resultType="org.zerock.domain.TravelogVO">
@@ -32,7 +33,8 @@
 			city city,
 			content content,
 			writer writer,
-			regdate regdate
+			regdate regdate,
+			company company
 		FROM travelog
 		WHERE bno = #{bno}
 	</select>
