@@ -25,7 +25,7 @@
 		VALUES (#{title}, #{city}, #{content}, #{writer})
 	</insert>
 	
-	<select id="read" resultType="rog.zerock.domain.TravelogVO">
+	<select id="read" resultType="org.zerock.domain.TravelogVO">
 		SELECT 
 			bno bno,
 			title title,
