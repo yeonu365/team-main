@@ -25,7 +25,7 @@
 				<label for="input3">방문도시</label>
 				<input id="input3" class="form-control" name="city">
 			</div><div class="form-group">
-				<label for="input4">이용한곳</label>
+				<label for="input4">이용회사</label>
 				<input id="input4" class="form-control" name="company">
 			</div>
 			<div class="form-group">

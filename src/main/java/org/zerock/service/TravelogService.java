@@ -8,7 +8,7 @@ public interface TravelogService {
 
 	public List<TravelogVO> getList();
 	
-	public void insert(TravelogVO travelog);
+	public void insertSelectKey(TravelogVO travelog);
 	
 	public TravelogVO read(Long bno);
 	

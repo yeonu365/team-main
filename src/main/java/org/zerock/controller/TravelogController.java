@@ -37,11 +37,12 @@ public class TravelogController {
 	}
 	
 	@PostMapping("/insert")
-	public String insert(TravelogVO travelog, RedirectAttributes rttr) {
+	public String insertSelectKey(TravelogVO travelog, RedirectAttributes rttr) {
 		log.info("travelog/insert executed");
-		service.insert(travelog);
+		service.insertSelectKey(travelog);
 		
 		rttr.addFlashAttribute("result", travelog.getBno());
+		rttr.addFlashAttribute("newwriter", travelog.getWriter());
 		return "redirect:/travelog/list";
 	}
 	

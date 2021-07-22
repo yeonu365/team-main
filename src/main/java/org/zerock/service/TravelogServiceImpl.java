@@ -20,7 +20,7 @@ public class TravelogServiceImpl implements TravelogService {
 	}
 	
 	@Override
-	public void insert(TravelogVO travelog) {
+	public void insertSelectKey(TravelogVO travelog) {
 		mapper.insertSelectKey(travelog);
 	}
 	
