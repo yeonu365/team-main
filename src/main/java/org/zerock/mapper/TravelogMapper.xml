@@ -17,8 +17,8 @@
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO travelog (title, city, content, writer, company)
-		VALUES (#{title}, #{city}, #{content}, #{writer}, #{company})
+		INSERT INTO travelog (title, city, company, content, writer)
+		VALUES (#{title}, #{city}, #{company}, #{content}, #{writer})
 	</insert>
 	
 	<insert id="insertSelectKey" useGeneratedKeys="true" keyProperty="bno" keyColumn="bno">

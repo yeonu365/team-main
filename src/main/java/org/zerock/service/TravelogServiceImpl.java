@@ -20,7 +20,7 @@ public class TravelogServiceImpl implements TravelogService {
 	}
 	
 	@Override
-	public void insertSelectKey(TravelogVO travelog) {
+	public void insert(TravelogVO travelog) {
 		mapper.insertSelectKey(travelog);
 	}
 	
@@ -33,6 +33,7 @@ public class TravelogServiceImpl implements TravelogService {
 	public boolean delete(Long bno) {
 		return mapper.delete(bno) == 1;
 	}
-
+	
+		
 
 }

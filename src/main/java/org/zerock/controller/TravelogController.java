@@ -28,13 +28,18 @@ public class TravelogController {
 		log.info("travelog/list executed");
 		
 		List<TravelogVO> list = service.getList();
-		model.addAttribute("list", list);
+		model.addAttribute("tlist", list);
+	}
+	
+	@GetMapping("/insert")
+	public void insert() {
+		
 	}
 	
 	@PostMapping("/insert")
 	public String insert(TravelogVO travelog, RedirectAttributes rttr) {
 		log.info("travelog/insert executed");
-		service.insertSelectKey(travelog);
+		service.insert(travelog);
 		
 		rttr.addFlashAttribute("result", travelog.getBno());
 		return "redirect:/travelog/list";
