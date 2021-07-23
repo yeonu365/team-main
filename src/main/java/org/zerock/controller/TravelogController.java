@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.TravelogVO;
 import org.zerock.service.TravelogService;
 
@@ -24,10 +25,10 @@ public class TravelogController {
 	private TravelogService service;
 	
 	@GetMapping("/list")
-	public void list(Model model) {
+	public void list(Model model, Criteria cri) {
 		log.info("travelog/list executed");
 		
-		List<TravelogVO> list = service.getList();
+		List<TravelogVO> list = service.getList(cri);
 		model.addAttribute("tlist", list);
 	}
 	

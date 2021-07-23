@@ -3,6 +3,7 @@ package org.zerock.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.TravelogVO;
 import org.zerock.mapper.TravelogMapper;
 
@@ -15,8 +16,8 @@ public class TravelogServiceImpl implements TravelogService {
 	private TravelogMapper mapper; 
 	
 	@Override
-	public List<TravelogVO> getList() {
-		return mapper.getList();
+	public List<TravelogVO> getList(Criteria cri) {
+		return mapper.getListWithPaging(cri);
 	}
 	
 	@Override

@@ -16,6 +16,19 @@
 		FROM travelog ORDER BY bno DESC
 	</select>
 	
+		<select id="getListWithPaging" resultType="org.zerock.domain.TravelogVO">
+		SELECT 
+			bno bno,
+			title title,
+			city city,
+			content content,
+			writer writer,
+			regdate regdate,
+			company company
+		FROM travelog ORDER BY bno DESC
+		LIMIT #{from}, #{amount}
+	</select>
+	
 	<insert id="insert">
 		INSERT INTO travelog (title, city, company, content, writer)
 		VALUES (#{title}, #{city}, #{company}, #{content}, #{writer})
