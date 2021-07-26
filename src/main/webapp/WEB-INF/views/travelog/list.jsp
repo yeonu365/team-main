@@ -18,6 +18,17 @@ a:hover {
 	color:hotpink;
 	}
 </style>
+<script>
+$(document).ready(function() {
+	$("#list-pagenation1 a").click(function(e) {
+		e.preventDefault();
+		console.log("a clicked");
+		var actionForm = $("#actionForm");
+		actionForm.find("[name=pageNum]").val($(this).attr("href"));
+		actionForm.submit();
+	});
+});
+</script>
 </head>
 <body>
 <nv:navbar></nv:navbar>
@@ -53,24 +64,26 @@ a:hover {
 </div>
 <!--  pagenation -->
 <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">4</a></li>
-    <li class="page-item"><a class="page-link" href="#">5</a></li>
-    <li class="page-item"><a class="page-link" href="#">6</a></li>
-    <li class="page-item"><a class="page-link" href="#">7</a></li>
-    <li class="page-item"><a class="page-link" href="#">8</a></li>
-    <li class="page-item"><a class="page-link" href="#">9</a></li>
-    <li class="page-item"><a class="page-link" href="#">10</a></li>
-    <li class="page-item">
-    <a class="page-link" href="#">Next</a></li>
+  <ul id="list-pagenation1" class="pagination justify-content-center">
+	<c:if test="${pageMaker.prev }">
+	  <li class="page-item">
+	  <a class="page-link" href="${pageMaker.startPage -1}">Previous</a></li>
+	</c:if>
+	<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="num">
+    	<li class="page-item"><a class="page-link" href="${num }">${num }</a></li>
+	</c:forEach>  
+	<c:if test="${pageMaker.next }">
+	  <li class="page-item"><a class="page-link" href="${pageMaker.endPage +1 }">Next</a></li>
+	</c:if>
   </ul>
 </nav>
-
+<%-- page link 용 form --%>
+<div style="display:none;">
+	<form id="actionForm" action="${appRoot }/travelog/list" method="get">
+		<input name="pageNum" value="${pageMaker.cri.pageNum }" />
+		<input name="amount" value="${pageMaker.cri.amount }" />
+	</form>
+</div>
 
 <!-- 글쓰고 list 로 redirect 될때 작동하는 modal -->
 <c:if test="${not empty result }">

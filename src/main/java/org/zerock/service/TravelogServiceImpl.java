@@ -35,6 +35,9 @@ public class TravelogServiceImpl implements TravelogService {
 		return mapper.delete(bno) == 1;
 	}
 	
-		
+	@Override
+	public int getTotal(Criteria cri) {
+		return mapper.getTotalCount(cri);
+	}
 
 }

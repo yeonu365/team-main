@@ -15,4 +15,6 @@ public interface TravelogService {
 	
 	public boolean delete(Long bno);
 
+	public int getTotal(Criteria cri);
+
 }

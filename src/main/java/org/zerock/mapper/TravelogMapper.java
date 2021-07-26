@@ -18,5 +18,7 @@ public interface TravelogMapper {
 	public int delete(Long bno);
 	
 	public List<TravelogVO> getListWithPaging(Criteria cri);
+
+	public int getTotalCount(Criteria cri);
 	
 }

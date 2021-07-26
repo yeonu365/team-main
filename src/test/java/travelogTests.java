@@ -1,4 +1,6 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -7,8 +9,10 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.TravelogVO;
 import org.zerock.mapper.TravelogMapper;
+import org.zerock.service.TravelogService;
 
 import lombok.Setter;
 
@@ -19,9 +23,31 @@ public class travelogTests {
 	@Setter(onMethod_= @Autowired)
 	private TravelogMapper mapper;
 	
+	@Setter(onMethod_ = @Autowired)
+	private TravelogService service;
+	
+//	@Test
+//	public void testGetList() {
+//		assertNotNull(mapper);
+//	}
+	
+	@Test
+	public void testPaging() {
+		Criteria cri = new Criteria();
+		List<TravelogVO> list = mapper.getListWithPaging(cri);
+		
+		assertEquals(10, list.size());
+		
+	}
+	
 	@Test
 	public void testGetList() {
-		assertNotNull(mapper);
+		Criteria cri = new Criteria(2,5);
+		List<TravelogVO> list = service.getList(cri);
+		
+		assertNotNull(list);
+		assertTrue(list.size() > 0);
+		assertEquals(5, list.size());
 		
 	}
 
