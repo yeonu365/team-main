@@ -14,6 +14,9 @@ a:link {
 	text-decoration: none;
 	color:black;
 }
+a:visited {
+	color:black;
+}
 a:hover {
 	color:hotpink;
 	}
@@ -23,6 +26,7 @@ $(document).ready(function() {
 	$("#list-pagenation1 a").click(function(e) {
 		e.preventDefault();
 		console.log("a clicked");
+		
 		var actionForm = $("#actionForm");
 		actionForm.find("[name=pageNum]").val($(this).attr("href"));
 		actionForm.submit();
@@ -47,10 +51,19 @@ $(document).ready(function() {
 			</tr>
 		</thead>		
 		<tbody>
-			<c:forEach items="${tlist }" var="travelog">
+			<c:forEach items="${list }" var="travelog">
 			<tr>
 				<td>${travelog.bno }</td>
-				<td><a href="${appRoot}/travelog/read?bno=${travelog.bno}">${travelog.title }</a></td>
+				
+				<c:url value="/travelog/read" var="readUrl">
+					<c:param name="bno" value="${travelog.bno }"></c:param>
+					<c:param name="pageNum" value="${pageMaker.cri.pageNum }"></c:param>
+					<c:param name="amount" value="${pageMaker.cri.amount }"></c:param>
+					<c:param name="type" value="${pageMaker.cri.type }"></c:param>
+					<c:param name="keyword" value="${pageMaker.cri.keyword }"></c:param>
+				</c:url>
+				
+				<td><a href="${readUrl }">${travelog.title }</a></td>
 				<td>${travelog.city }</td>
 				<td>${travelog.company }</td>
 				<td>${travelog.writer }</td>
@@ -70,7 +83,7 @@ $(document).ready(function() {
 	  <a class="page-link" href="${pageMaker.startPage -1}">Previous</a></li>
 	</c:if>
 	<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="num">
-    	<li class="page-item"><a class="page-link" href="${num }">${num }</a></li>
+    	<li class="page-item" ${num ==cri.pageNum ? 'active' : '' }><a class="page-link" href="${num }">${num }</a></li>
 	</c:forEach>  
 	<c:if test="${pageMaker.next }">
 	  <li class="page-item"><a class="page-link" href="${pageMaker.endPage +1 }">Next</a></li>
@@ -80,8 +93,10 @@ $(document).ready(function() {
 <%-- page link 용 form --%>
 <div style="display:none;">
 	<form id="actionForm" action="${appRoot }/travelog/list" method="get">
-		<input name="pageNum" value="${pageMaker.cri.pageNum }" />
-		<input name="amount" value="${pageMaker.cri.amount }" />
+		<input name="pageNum" value="${cri.pageNum }" />
+		<input name="amount" value="${cri.amount }" />
+		<input name="type" value="${cri.type }" />
+		<input name="keyword" value="${cri.keyword }" />
 	</form>
 </div>
 

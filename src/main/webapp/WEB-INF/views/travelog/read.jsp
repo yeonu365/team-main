@@ -47,7 +47,19 @@ $(document).ready(function() {
 				<label for="input2">작성자</label>
 				<input readonly id="input2" class="form-control" name="writer" value="${travelog.writer}">
 			</div>
-			<a class="btn btn-dark" href="${appRoot }/travelog/list">목록보기</a>
+			
+			<c:url value="/travelog/list" var="listUrl">
+			<c:param name="bno" value="${travelog.bno }"></c:param>
+				<c:param name="pageNum" value="${cri.pageNum }"></c:param>
+				<c:param name="amount" value="${cri.amount }"></c:param>
+				<c:param name="type" value="${cri.type }"></c:param>
+				<c:param name="keyword" value="${cri.keyword }"></c:param>
+			</c:url>
+<!-- 			
+		<input type="hidden" name="pageNum" value="${cri.pageNum }">
+    	<input type="hidden" name="amount" value="${cri.amount }">
+ -->
+			<a class="btn btn-dark" href="${listUrl }">목록으로 돌아가기</a>
 			<input id="board-delete-btn1" class="btn btn-danger" type="button" value="삭제"/>
 		</form>
 	</div>

@@ -27,13 +27,13 @@ public class TravelogController {
 	private TravelogService service;
 	
 	@GetMapping("/list")
-	public void list(Model model, @ModelAttribute("cri") Criteria cri) {
+	public void list(@ModelAttribute("cri") Criteria cri, Model model) {
 		log.info("travelog/list executed");
 		
 		int total = service.getTotal(cri);
 		
 		List<TravelogVO> list = service.getList(cri);
-		model.addAttribute("tlist", list);
+		model.addAttribute("list", list);
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
@@ -58,6 +58,9 @@ public class TravelogController {
 		
 		TravelogVO vo = service.read(bno);
 		model.addAttribute("travelog", vo);
+		
+		model.addAttribute("pageNum", cri.getPageNum());
+		model.addAttribute("amount", cri.getAmount());
 	}
 	
 	@PostMapping("/delete")
@@ -66,11 +69,13 @@ public class TravelogController {
 		boolean success = service.delete(bno);
 		if (success) {
 			rttr.addAttribute("result", "success");
-			rttr.addFlashAttribute("messagfeTitle", "삭제 성공");
+			rttr.addFlashAttribute("messageTitle", "삭제 성공");
 			rttr.addFlashAttribute("messageBody", "삭제 되었습니다.");
 		}
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("type", cri.getType());
+		rttr.addAttribute("keyword", cri.getKeyword());
 		return "redirect:/travelog/list";
 	}
 

@@ -1,14 +1,18 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.servlet.ModelAndView;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.TravelogVO;
 import org.zerock.mapper.TravelogMapper;
@@ -50,5 +54,5 @@ public class travelogTests {
 		assertEquals(5, list.size());
 		
 	}
-
+	
 }
