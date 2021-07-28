@@ -27,7 +27,7 @@ public class TravelogController {
 	private TravelogService service;
 	
 	@GetMapping("/list")
-	public void list(@ModelAttribute("cri") Criteria cri, Model model) {
+	public void list(Model model, @ModelAttribute("cri") Criteria cri) {
 		log.info("travelog/list executed");
 		
 		int total = service.getTotal(cri);
@@ -59,8 +59,8 @@ public class TravelogController {
 		TravelogVO vo = service.read(bno);
 		model.addAttribute("travelog", vo);
 		
-		model.addAttribute("pageNum", cri.getPageNum());
-		model.addAttribute("amount", cri.getAmount());
+//		model.addAttribute("pageNum", cri.getPageNum());
+//		model.addAttribute("amount", cri.getAmount());
 	}
 	
 	@PostMapping("/delete")
