@@ -37,9 +37,9 @@ $(document).ready(function() {
 <body>
 <nv:navbar></nv:navbar>
 <div class="container">
-	<h1> </h1>
+	
  	<h1 style="text-align:center;">글 목록</h1>
- 	<h4 style="text-align:right;">글쓰기</h4>
+
 	<table class="table table-hover">
 		<thead>
 			<tr class="table-secondary">
@@ -100,6 +100,7 @@ $(document).ready(function() {
 		<input name="keyword" value="${cri.keyword }" />
 	</form>
 </div>
+ 	<h4 style="text-align:right;">글쓰기</h4>
 
 <!-- 글쓰고 list 로 redirect 될때 작동하는 modal -->
 <c:if test="${not empty result }">

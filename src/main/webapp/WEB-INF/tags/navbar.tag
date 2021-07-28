@@ -31,7 +31,7 @@
         <a class="nav-link" href="${listUrl }">여행기</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="${insertUrl }">글쓰기</a>
+        <a class="nav-link" href="${insertUrl }">나의 여행기</a>
       </li>
     </ul>
   </div>
