@@ -20,7 +20,7 @@
 </c:if>
 </c:url>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="${appRoot }/travelog/list">travelers</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -28,7 +28,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="${listUrl }">목록보기</a>
+        <a class="nav-link" href="${listUrl }">여행기</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="${insertUrl }">글쓰기</a>

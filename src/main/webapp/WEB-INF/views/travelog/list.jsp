@@ -37,17 +37,18 @@ $(document).ready(function() {
 <body>
 <nv:navbar></nv:navbar>
 <div class="container">
-	<h1>글 목록</h1>
-	<table class="table table-striped">
+	<h1> </h1>
+ 	<h1 style="text-align:center;">글 목록</h1>
+ 	<h4 style="text-align:right;">글쓰기</h4>
+	<table class="table table-hover">
 		<thead>
-			<tr>
-				<th>글번호</th>
-				<th>제목</th>
-				<th>방문도시</th>
-				<th>이용회사</th>
-				<th>작성자</th>
-				<th>작성일</th>
-				
+			<tr class="table-secondary">
+				<th scope="col">글번호</th>
+				<th scope="col">제목</th>
+				<th scope="col">방문도시</th>
+				<th scope="col">이용회사</th>
+				<th scope="col">작성자</th>
+				<th scope="col">작성일</th>
 			</tr>
 		</thead>		
 		<tbody>
