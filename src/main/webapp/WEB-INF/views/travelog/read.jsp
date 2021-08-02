@@ -7,7 +7,34 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp" %>
-<title>hello travelers!</title>
+<title>hell♡ travelers!</title>
+<script>
+$(function() {
+	function showReplyList(list) {
+		var container = $("#reply-list-container");
+		
+		for (var reply of list) {
+			var newItem = $("<div>");
+			newItem.append("<span>" + reply.rno + ",</span>")
+			.append("<span>" + reply.reply + ",</span>")
+			.append("<span>" + reply.replyer + ",</span>")
+			.append("<span>" + reply.replyDate + ",</span>");
+			container.append(newItem);
+		}
+	}
+	$.ajax({
+		type: "get",
+		url: "${appRoot}/replies/pages/${travelog.bno}",
+		success: function(list) {
+			console.log(list);
+			showReplyList(list);
+		},
+		error: function() {
+			console.log("error with reply");
+		}
+	});
+})
+</script>
 <script>
 $(document).ready(function() {
 	var removeUrl = "${appRoot}/travelog/delete"
@@ -65,6 +92,13 @@ $(document).ready(function() {
 	</div>
 </div>	
 	
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<div id="reply-list-container"></div>
+		</div>
+	</div>
 </div>
 </body>
 </html>
