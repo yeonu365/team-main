@@ -8,7 +8,7 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp" %>
-<title>hello travelers!</title>
+<title>hello travelers♡</title>
 <style>
 a:link {
 	text-decoration: none;
@@ -64,7 +64,10 @@ $(document).ready(function() {
 					<c:param name="keyword" value="${pageMaker.cri.keyword }"></c:param>
 				</c:url>
 				
-				<td><a href="${readUrl }">${travelog.title }</a></td>
+				<td><a href="${readUrl }">${travelog.title }
+				<c:if test="${travelog.replyCnt > 0 }">[${travelog.replyCnt }]
+				</c:if>
+				</a></td>
 				<td>${travelog.city }</td>
 				<td>${travelog.company }</td>
 				<td>${travelog.writer }</td>

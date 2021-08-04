@@ -33,4 +33,12 @@
 	SELECT * FROM reply WHERE bno = #{bno} ORDER BY rno ASC
 	</select>
 
+	<select id="getCountByBno" resultType="int">
+	SELECT COUNT(*) FROM reply WHERE bno = #{bno}
+	</select>
+	
+	<delete id="deleteByBno">
+	DELETE FROM reply
+	WHERE bno = #{bno}
+	</delete>
 </mapper>

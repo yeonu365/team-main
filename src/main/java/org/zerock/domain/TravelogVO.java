@@ -13,4 +13,6 @@ public class TravelogVO {
 	private String writer;
 	private Date regdate;
 	private String company;
+	
+	private int replyCnt;
 }

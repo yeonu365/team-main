@@ -9,16 +9,16 @@
 		<foreach item="type" separator="OR" collection="typeArr">
 			<choose>
 				<when test='type == "T"'>
-					title LIKE CONCAT('%', #{keyword}, '%')
+					b.title LIKE CONCAT('%', #{keyword}, '%')
 				</when>
 				<when test='type == "C"'>
-					city LIKE CONCAT('%', #{keyword}, '%')
+					b.city LIKE CONCAT('%', #{keyword}, '%')
 				</when>
 				<when test='type == "A"'>
-					company LIKE CONCAT('%', #{keyword}, '%')
+					b.company LIKE CONCAT('%', #{keyword}, '%')
 				</when>
 				<when test='type == "W"'>
-					writer LIKE CONCAT('%', #{keyword}, '%')
+					b.writer LIKE CONCAT('%', #{keyword}, '%')
 				</when>
 			</choose>
 		</foreach>
@@ -37,20 +37,27 @@
 		FROM travelog ORDER BY bno DESC
 	</select>
 	
-		<select id="getListWithPaging" resultType="org.zerock.domain.TravelogVO">
+	<select id="getListWithPaging" resultType="org.zerock.domain.TravelogVO">
 		SELECT 
-			bno bno,
-			title title,
-			city city,
-			content content,
-			writer writer,
-			regdate regdate,
-			company company
-		FROM travelog 
+			b.bno bno,
+			b.title title,
+			b.city city,
+			b.content content,
+			b.writer writer,
+			b.regdate regdate,
+			b.company company,
+			count(r.rno) replyCnt
+		FROM travelog b LEFT JOIN reply r ON b.bno = r.bno
 		
 		<include refid="criteria"></include>
-		ORDER BY bno DESC
+		GROUP BY b.bno
+		ORDER BY b.bno DESC
 		LIMIT #{from}, #{amount}
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		SELECT COUNT(*) FROM travelog b
+		<include refid="criteria"></include>
 	</select>
 	
 	<insert id="insert">
@@ -62,11 +69,6 @@
 		INSERT INTO travelog (title, city, company, content, writer)
 		VALUES (#{title}, #{city}, #{company}, #{content}, #{writer})
 	</insert>
-	
-	<select id="getTotalCount" resultType="int">
-		SELECT COUNT(*) FROM travelog
-		<include refid="criteria"></include>
-	</select>
 	
 	<select id="read" resultType="org.zerock.domain.TravelogVO">
 		SELECT 

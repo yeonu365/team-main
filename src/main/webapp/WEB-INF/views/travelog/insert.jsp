@@ -8,7 +8,7 @@
 
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp" %>
 
-<title>hello travelers!</title>
+<title>hello travelers♡</title>
 </head>
 <body>
 <nv:navbar></nv:navbar>
