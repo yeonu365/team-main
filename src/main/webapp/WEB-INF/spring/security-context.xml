@@ -4,7 +4,7 @@
 	xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+<!-- 
 <security:http>
 	<security:http-basic/>
 	<security:csrf disabled="true"/>
@@ -17,5 +17,37 @@
 		</security:user-service>
 	</security:authentication-provider>
 </security:authentication-manager>
+-->
+<security:http>
+	<security:intercept-url pattern="/secure/all" access="permitAll" />
+	<security:intercept-url pattern="/secure/member" access="hasRole('ROLE_MEMBER')"/>
+	<security:intercept-url pattern="/secure/admin" access="hasRole('ROLE_ADMIN')"/>
+	<security:form-login login-page="/member/login "/>
+	<security:logout/>
+	<security:csrf disabled="true"/>
+	<security:remember-me data-source-ref="dataSource"/>
+</security:http>
+
+
+<security:authentication-manager>
+	<security:authentication-provider>
+		<security:user-service>
+			<security:user name="member" password="{noop}member" authorities="ROLE_MEMBER"/>
+			<security:user name="admin" password="{noop}admin" authorities="ROLE_MEMBER, ROLE_ADMIN"/>
+		</security:user-service>
+	</security:authentication-provider>
+</security:authentication-manager>
+
+
+<!-- 
+<security:authentication-manager>
+	<security:authentication-provider user-service-ref="customUserDetailsService">
+		<security:password-encoder ref="bcryptPasswordEncoder"/>
+	</security:authentication-provider>
+</security:authentication-manager>
+ -->
+ 
+<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+ 
 
 </beans>

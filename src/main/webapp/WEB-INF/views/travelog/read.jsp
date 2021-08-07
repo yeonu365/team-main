@@ -7,7 +7,7 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp" %>
-<title>hello travelers!</title>
+<title>hello travelers♡</title>
 <style>
 #alert1 {
 	width: 380px;

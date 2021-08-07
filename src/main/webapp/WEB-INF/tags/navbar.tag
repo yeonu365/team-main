@@ -33,10 +33,24 @@
       <li class="nav-item">
         <a class="nav-link" href="${insertUrl }">나의 여행기</a>
       </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="${appRoot }/secure/all">[all]</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="${appRoot }/secure/member">[member only]</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="${appRoot }/secure/admin">[admin only]</a>
+      </li>
+      
     </ul>
   </div>
+  <form action="${appRoot }/logout" method="post">
+  	<input type="submit" class="btn btn-outline-secondary" value="로그아웃">
+  </form>
 
-  <form action="${listUrl }" method="get" class="form-inline">
+ &nbsp &nbsp<form action="${listUrl }" method="get" class="form-inline">
   	<select name="type" class="form-control mr-sm-2">
   		<option value="TCAW" ${cri.type == "TCAW" ? 'selected' : '' }>전체검색</option>
   		<option value="T" ${cri.type == "T" ? 'selected' : '' }>제목</option>
