@@ -22,13 +22,19 @@
 	<security:intercept-url pattern="/secure/all" access="permitAll" />
 	<security:intercept-url pattern="/secure/member" access="hasRole('ROLE_MEMBER')"/>
 	<security:intercept-url pattern="/secure/admin" access="hasRole('ROLE_ADMIN')"/>
-	<security:form-login login-page="/member/login "/>
+	<security:form-login login-page="/member/login" />
 	<security:logout/>
 	<security:csrf disabled="true"/>
 	<security:remember-me data-source-ref="dataSource"/>
 </security:http>
 
+<security:authentication-manager>
+	<security:authentication-provider user-service-ref="customUserDetailsService">
+		<security:password-encoder ref="bcryptPasswordEncoder"/>
+	</security:authentication-provider>
+</security:authentication-manager>
 
+<!-- 
 <security:authentication-manager>
 	<security:authentication-provider>
 		<security:user-service>
@@ -37,15 +43,9 @@
 		</security:user-service>
 	</security:authentication-provider>
 </security:authentication-manager>
-
-
-<!-- 
-<security:authentication-manager>
-	<security:authentication-provider user-service-ref="customUserDetailsService">
-		<security:password-encoder ref="bcryptPasswordEncoder"/>
-	</security:authentication-provider>
-</security:authentication-manager>
  -->
+
+
  
 <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
  
