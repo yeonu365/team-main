@@ -19,6 +19,16 @@
 	<c:param name="type" value="${cri.type }"></c:param>
 </c:if>
 </c:url>
+<c:url value="/member/signup" var="signUpUrl">
+	<c:if test="${not empty cri.pageNum }">
+		<c:param name="pageNum" value="${cri.pageNum }"></c:param>
+	</c:if>
+	<c:if test="${not empty cri.amount }">
+		<c:param name="amount" value="${cri.amount }"></c:param>
+	</c:if>
+		<c:param name="keyword" value="${cri.keyword }"></c:param>
+		<c:param name="type" value="${cri.type }"></c:param>
+</c:url>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="${appRoot }/travelog/list">travelers</a>
@@ -30,9 +40,11 @@
       <li class="nav-item">
         <a class="nav-link" href="${listUrl }">여행기</a>
       </li>
+   	<sec:authorize access="isAuthenticated()">
       <li class="nav-item">
         <a class="nav-link" href="${insertUrl }">나의 여행기</a>
       </li>
+   	</sec:authorize>
       
       <li class="nav-item">
         <a class="nav-link" href="${appRoot }/secure/all">[all]</a>
@@ -43,12 +55,22 @@
       <li class="nav-item">
         <a class="nav-link" href="${appRoot }/secure/admin">[admin only]</a>
       </li>
-      
+    
+    <sec:authorize access="!isAuthenticated()">
+  		<li class="nav-item">
+  			<a class="nav-link" href="${signUpUrl }">회원가입</a>
+  		</li>
+  	</sec:authorize> 
+  
     </ul>
   </div>
-  <form action="${appRoot }/logout" method="post">
-  	<input type="submit" class="btn btn-outline-secondary" value="로그아웃">
-  </form>
+ 
+  
+  <sec:authorize access="isAuthenticated()">
+	  <form action="${appRoot }/logout" method="post">
+	  	<input type="submit" class="btn btn-outline-secondary" value="로그아웃">
+	  </form>
+  </sec:authorize>
 
  &nbsp &nbsp<form action="${listUrl }" method="get" class="form-inline">
   	<select name="type" class="form-control mr-sm-2">
@@ -65,3 +87,7 @@
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
   </form>
 </nav>
+<%-- spring security test 
+<div>
+	<sec:authentication property="principal" /></div>
+--%>

@@ -2,6 +2,7 @@ package org.zerock.controller;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +39,7 @@ public class TravelogController {
 	}
 	
 	@GetMapping("/insert")
+	@PreAuthorize("isAuthenticated()")
 	public void insert(@ModelAttribute("cri") Criteria cri ) {
 		
 	}
@@ -53,6 +55,7 @@ public class TravelogController {
 	}
 	
 	@GetMapping("/read")
+	@PreAuthorize("isAuthenticated()")
 	public void read(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
 		log.info("travelog/read method");
 		
@@ -64,7 +67,8 @@ public class TravelogController {
 	}
 	
 	@PostMapping("/delete")
-	public String delete(@RequestParam("bno") Long bno, Criteria cri, RedirectAttributes rttr) {
+	@PreAuthorize("principal.username == #writer")
+	public String delete(@RequestParam("bno") Long bno, Criteria cri, RedirectAttributes rttr, String writer) {
 		log.info("travelog/delete executed");
 		boolean success = service.delete(bno);
 		if (success) {
@@ -78,8 +82,4 @@ public class TravelogController {
 		rttr.addAttribute("keyword", cri.getKeyword());
 		return "redirect:/travelog/list";
 	}
-
-	
-	
-	
 }

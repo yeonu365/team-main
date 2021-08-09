@@ -46,8 +46,10 @@
 			b.writer writer,
 			b.regdate regdate,
 			b.company company,
+			m.username writerName,
 			count(r.rno) replyCnt
 		FROM travelog b LEFT JOIN reply r ON b.bno = r.bno
+						INNER JOIN member m ON b.writer = m.userid
 		
 		<include refid="criteria"></include>
 		GROUP BY b.bno
@@ -72,15 +74,16 @@
 	
 	<select id="read" resultType="org.zerock.domain.TravelogVO">
 		SELECT 
-			bno bno,
-			title title,
-			city city,
-			content content,
-			writer writer,
-			regdate regdate,
-			company company
-		FROM travelog
-		WHERE bno = #{bno}
+			b.bno bno,
+			b.title title,
+			b.city city,
+			b.content content,
+			b.writer writer,
+			b.regdate regdate,
+			b.company company,
+			m.username writerName
+		FROM travelog b LEFT JOIN member m ON b.writer = m.userid
+		WHERE b.bno = #{bno}
 	</select>
 	
 	<delete id="delete">

@@ -16,8 +16,16 @@
 	</insert>
 	
 	<select id="read" resultType="org.zerock.domain.ReplyVO">
-	SELECT * FROM reply
-	WHERE rno = #{rno}
+	SELECT
+		r.rno rno,
+		r.bno bno,
+		r.reply reply,
+		r.replyer replyer,
+		r.replyDate replyDate,
+		r.updateDate updateDate,
+		m.username replyerName 
+	FROM reply r JOIN member m ON r.replyer=m.userid 
+	WHERE r.rno = #{rno}
 	</select>
 	
 	<delete id="delete">
@@ -30,7 +38,16 @@
 	</update>
 	
 	<select id="getList" resultType="org.zerock.domain.ReplyVO">
-	SELECT * FROM reply WHERE bno = #{bno} ORDER BY rno ASC
+	SELECT
+		r.rno rno,
+		r.bno bno,
+		r.reply reply,
+		r.replyer replyer,
+		r.replyDate replyDate,
+		r.updateDate updateDate,
+		m.username replyerName 
+	FROM reply r JOIN member m ON r.replyer=m.userid 
+	WHERE r.bno = #{bno} ORDER BY r.rno ASC
 	</select>
 
 	<select id="getCountByBno" resultType="int">

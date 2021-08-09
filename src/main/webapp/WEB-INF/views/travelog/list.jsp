@@ -70,7 +70,7 @@ $(document).ready(function() {
 				</a></td>
 				<td>${travelog.city }</td>
 				<td>${travelog.company }</td>
-				<td>${travelog.writer }</td>
+				<td>${travelog.writerName }</td>
 				<td>
 					<fmt:formatDate pattern="yyyy-MM-dd" value="${travelog.regdate }" />
 				</td>

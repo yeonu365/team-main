@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="nv" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -20,9 +21,11 @@
 <script type="text/javascript">
 var appRoot = "${appRoot}";
 var travelogBno = "${travelog.bno}";
+var userid = "${pinfo.member.userid}";
 </script>
 
 <script src="${appRoot }/resources/js/read.js"></script>
+
 
 <script>
 $(document).ready(function() {
@@ -35,6 +38,7 @@ $(document).ready(function() {
 	});
 	});
 </script>
+
 </head>
 <body>
 <nv:navbar></nv:navbar>
@@ -66,7 +70,8 @@ $(document).ready(function() {
 			</div>
 			<div class="form-group">
 				<label for="input2">작성자</label>
-				<input readonly id="input2" class="form-control" name="writer" value="${travelog.writer}">
+				<input type="hidden" readonly id="input2" class="form-control" name="writer" value="${travelog.writer}">
+				<input readonly="readonly" class="form-control" value="${travelog.writerName}">
 			</div>
 			
 			<c:url value="/travelog/list" var="listUrl">
@@ -80,10 +85,14 @@ $(document).ready(function() {
 		<input type="hidden" name="pageNum" value="${cri.pageNum }">
     	<input type="hidden" name="amount" value="${cri.amount }">
  -->
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#reply-insert-modal">댓글 작성</button>
-			<input style="float:right; margin-left:8px;" id="board-delete-btn1" class="btn btn-danger" type="button" value="게시글삭제"/>
+ 	
+		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#reply-insert-modal">댓글 작성</button>
+		<c:if test="${pinfo.member.userid eq travelog.writer }">
+			<input style="float:right; margin-left:8px;" id="board-delete-btn1" class="btn btn-danger" type="button" value="게시글삭제"/>   
+		</c:if>
 			<a style="float:right;" class="btn btn-dark" href="${listUrl }">목록으로 돌아가기</a>
 		</form>
+		
 	</div>
 </div>	
 	
@@ -91,12 +100,11 @@ $(document).ready(function() {
 <div class="container">
 	<div class="row">
 		<div class="col-12">
-			<div id="reply-list-container"></div>
+			<ul class="list-unstyped" id="reply-list-container"></ul>
 		</div>
 	</div>
 </div>
 <%-- 댓글 입력 모달 --%>
-
 <div class="modal fade" id="reply-insert-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -115,7 +123,8 @@ $(document).ready(function() {
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">작성자</label>
-            <input type="text" class="form-control" id="reply-replyer-input1">
+            <input type="text" readonly value="${pinfo.member.username }" class="form-control">
+            <input type="hidden" value="${pinfo.member.userid }" class="form-control" id="reply-replyer-input1">
           </div>
         </form>
       </div>
@@ -146,19 +155,22 @@ $(document).ready(function() {
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">작성자</label>
-            <input type="text" class="form-control" id="reply-replyer-input2">
+            <input type="hidden" class="form-control" id="reply-replyer-input2" readonly>
+            <input type="text" class="form-control" id="reply-replyerName-input2" readonly>
           </div>
         </form>
       </div>
+      
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+      <span id="reply-modify-delete-btn-wrapper">
         <button type="button" class="btn btn-info" id="reply-modify-btn1">댓글 수정</button>
         <button type="button" class="btn btn-danger" id="reply-delete-btn1">댓글 삭제</button>
+      </span>
       </div>
     </div>
   </div>
 </div>
-
 
 </body>
 </html>

@@ -22,10 +22,10 @@
 	<security:intercept-url pattern="/secure/all" access="permitAll" />
 	<security:intercept-url pattern="/secure/member" access="hasRole('ROLE_MEMBER')"/>
 	<security:intercept-url pattern="/secure/admin" access="hasRole('ROLE_ADMIN')"/>
-	<security:form-login login-page="/member/login" />
+	<security:form-login login-page="/member/login" default-target-url="/travelog/list"/>
 	<security:logout/>
 	<security:csrf disabled="true"/>
-	<security:remember-me data-source-ref="dataSource"/>
+	<security:remember-me data-source-ref="dataSource" token-validity-seconds="3600"/>
 </security:http>
 
 <security:authentication-manager>
@@ -48,6 +48,6 @@
 
  
 <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
- 
+<bean id="customUserDetailsService" class="org.zerock.security.CustomUserDetailsService"></bean> 
 
 </beans>

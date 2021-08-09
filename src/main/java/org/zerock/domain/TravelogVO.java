@@ -11,6 +11,7 @@ public class TravelogVO {
 	private String city;
 	private String content;
 	private String writer;
+	private String writerName;
 	private Date regdate;
 	private String company;
 	

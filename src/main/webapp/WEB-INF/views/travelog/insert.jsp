@@ -34,7 +34,8 @@
 			</div>
 			<div class="form-group">
 				<label for="input2">작성자</label>
-				<input id="input2" class="form-control" name="writer">
+				<input id="input2" hidden value="${pinfo.member.userid }" readonly class="form-control" name="writer">
+				<input value="${pinfo.member.username }" class="form-control" readonly>
 			</div>
 			<input class="btn btn-primary" type="submit" value="글올리기" />
 		</form>

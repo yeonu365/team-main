@@ -1,8 +1,6 @@
 /*
  reply 관련 JS 코드
  */
-
-
 $(function() {
 	function showModifyModal(rno) {
 		$.ajax({
@@ -12,6 +10,19 @@ $(function() {
 				$("#reply-rno-input2").val(reply.rno);
 				$("#reply-reply-textarea2").text(reply.reply);
 				$("#reply-replyer-input2").val(reply.replyer);
+				$("#reply-replyerName-input2").val(reply.replyerName);
+				
+				if (userid != reply.replyer) {
+					$("#reply-modify-modal")
+						.find("#reply-modify-delete-btn-wrapper")
+						.hide();
+						$("#reply-reply-textarea2").attr("readonly", "readonly");
+				} else {
+					$("#reply-modify-modal")
+						.find("#reply-modify-delete-btn-wrapper") 
+						.show()
+						$("#reply-reply-textarea2").removeAttr("readonly");
+				}
 				$("#reply-modify-modal").modal("show");
 			},
 			error: function() {
@@ -28,7 +39,7 @@ $(function() {
                 <li class="media" id="reply${reply.rno}" data-rno="${reply.rno}">
                     <div class="media-body">
                         <p>${reply.reply}</p>
-                        <h5>${reply.replyer}</h5>
+                        <h5>${reply.replyerName}</h5>
                         <small>${new Date(reply.replyDate).toISOString().split("T")[0]}</small>
                     </div>        
                 </li>`;
@@ -121,22 +132,24 @@ $(function() {
 		var check = confirm("정말 삭제 하시겠습니까?")
 		if(check) {
 			var rno = $("#reply-rno-input2").val();
+			var replyer = $("#reply-replyer-input2").val();
+			var data = {
+					rno: rno,
+					replyer: replyer
+		}			
 /*			
 			var bno = $("#reply-bno-input2").val();
 			var reply = $("#reply-reply-textarea2").val();
-			var replyer = $("#reply-replyer-input2").val();
 			
-			var data = {
-					rno: rno,
 					bno: bno,
 					reply: reply,
-					replyer: replyer
 			};
 */
 		$.ajax({
 			type: "delete",
 			url: appRoot +"/replies/" + rno,
-			
+			data : JSON.stringify(data),
+			contentType : "application/json",
 			success: function() {
 				console.log("삭제 성공");
 				$("#reply-modify-modal").modal("hide");
@@ -150,4 +163,5 @@ $(function() {
 		})
 		}
 	})
+
 })
