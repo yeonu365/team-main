@@ -86,7 +86,7 @@ public class MemberController {
 		
 		if(ok) {
 			req.logout();
-			return "redirect:travelog/list";
+			return "redirect:/travelog/list";
 		} else {
 			rttr.addAttribute("status", "error");
 			return "redirect:/member/info";
