@@ -2,6 +2,7 @@ package org.zerock.mapper;
 
 import java.util.List;
 
+import org.zerock.domain.MemberVO;
 import org.zerock.domain.ReplyVO;
 
 public interface ReplyMapper {
@@ -21,5 +22,9 @@ public interface ReplyMapper {
 	public int getCountByBno(Long bno);
 	
 	public int deleteByBno(Long bno);
+
+	public void removeByUserid(MemberVO vo);
+
+	public void removeByBnoByUser(MemberVO vo);
 	
 }

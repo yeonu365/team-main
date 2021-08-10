@@ -3,6 +3,7 @@ package org.zerock.mapper;
 import java.util.List;
 
 import org.zerock.domain.Criteria;
+import org.zerock.domain.MemberVO;
 import org.zerock.domain.TravelogVO;
 
 public interface TravelogMapper {
@@ -20,5 +21,7 @@ public interface TravelogMapper {
 	public List<TravelogVO> getListWithPaging(Criteria cri);
 
 	public int getTotalCount(Criteria cri);
+
+	public void removeByUserid(MemberVO vo);
 	
 }

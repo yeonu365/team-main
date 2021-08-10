@@ -5,6 +5,13 @@
   
 <mapper namespace="org.zerock.mapper.ReplyMapper">
 
+	<delete id="removeByBnoByUser">
+	DELETE FROM reply WHERE bno IN (SELECT bno FROM travelog WHERE writer = #{userid})
+	</delete>
+
+	<delete id="removeByUserid">
+	DELETE FROM reply WHERE replyer = #{userid}
+	</delete>
 	<insert id="insert">
 	INSERT INTO reply (bno, reply, replyer)
 	VALUES (#{bno}, #{reply}, #{replyer})

@@ -32,6 +32,16 @@ public class MemberMapperTests {
 		assertNotNull(encoder);
 	}
 	
+	@Test
+	public void testUpdate() {
+		MemberVO vo = mapper.read("id2");
+		
+		String newpw = "goeurope";
+		vo.setUserpw(encoder.encode(newpw));
+		assertEquals(1, mapper.update(vo));
+	}
+	
+	/*
 	@Test(expected = Exception.class)
 	public void testInsert() {
 		MemberVO vo1 = new MemberVO();
@@ -54,7 +64,7 @@ public class MemberMapperTests {
 	
 	@Test
 	public void  testInsertAuth() {
-		/*
+		
 		AuthVO vo1 = new AuthVO();
 		vo1.setAuth("ROLE_MEMBER");
 		vo1.setUserid("member");
@@ -67,7 +77,7 @@ public class MemberMapperTests {
 		vo1.setAuth("ROLE_ADMIN");
 		vo1.setUserid("admin");
 		mapper.insertAuth(vo1);
-		*/
+		
 	}
 	
 	@Test
@@ -79,5 +89,6 @@ public class MemberMapperTests {
 		assertEquals("어드민", vo.getUsername());
 		assertTrue(encoder.matches("admin", vo.getUserpw()));
 	}
+	*/
 }
 

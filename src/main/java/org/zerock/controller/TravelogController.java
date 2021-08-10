@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.MemberVO;
 import org.zerock.domain.PageDTO;
 import org.zerock.domain.TravelogVO;
 import org.zerock.service.TravelogService;
@@ -50,7 +51,7 @@ public class TravelogController {
 		service.insertSelectKey(travelog);
 		
 		rttr.addFlashAttribute("result", travelog.getBno());
-		rttr.addFlashAttribute("newwriter", travelog.getWriter());
+		rttr.addFlashAttribute("newwriter", travelog.getWriterName());
 		return "redirect:/travelog/list";
 	}
 	

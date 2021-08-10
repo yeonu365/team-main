@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="bd" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="nv" tagdir="/WEB-INF/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,7 @@
 <title>hello travelers♡</title>
 </head>
 <body>
-<bd:navbar></bd:navbar>
+<nv:navbar></nv:navbar>
 <div class="container">
 	<div class="row justify-content-center">
 	<div class="col-md-12 col-6">

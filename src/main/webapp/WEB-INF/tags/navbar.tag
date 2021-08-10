@@ -29,9 +29,19 @@
 		<c:param name="keyword" value="${cri.keyword }"></c:param>
 		<c:param name="type" value="${cri.type }"></c:param>
 </c:url>
+<c:url value="/member/info" var="memberInfoUrl">
+	<c:if test="${not empty cri.pageNum }">
+		<c:param name="pageNum" value="${cri.pageNum }"></c:param>
+	</c:if>
+	<c:if test="${not empty cri.amount }">
+		<c:param name="amount" value="${cri.amount }"></c:param>
+	</c:if>
+		<c:param name="keyword" value="${cri.keyword }"></c:param>
+		<c:param name="type" value="${cri.type }"></c:param>
+</c:url>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="${appRoot }/travelog/list">travelers</a>
+  <a class="navbar-brand" href="${appRoot }/travelog/list">somewhereInEurope</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -45,26 +55,23 @@
         <a class="nav-link" href="${insertUrl }">나의 여행기</a>
       </li>
    	</sec:authorize>
-      
-      <li class="nav-item">
-        <a class="nav-link" href="${appRoot }/secure/all">[all]</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${appRoot }/secure/member">[member only]</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${appRoot }/secure/admin">[admin only]</a>
-      </li>
-    
+  
     <sec:authorize access="!isAuthenticated()">
   		<li class="nav-item">
   			<a class="nav-link" href="${signUpUrl }">회원가입</a>
   		</li>
   	</sec:authorize> 
+    <sec:authorize access="isAuthenticated()">
+  		<li class="nav-item">
+  			<a class="nav-link" href="${memberInfoUrl }">회원정보</a>
+  		</li>
+  	</sec:authorize>
   
     </ul>
   </div>
- 
+ <sec:authorize access="!isAuthenticated()">
+ 	<a href="${appRoot }/member/login" class="btn btn-outline-primary">로그인</a>
+ </sec:authorize>
   
   <sec:authorize access="isAuthenticated()">
 	  <form action="${appRoot }/logout" method="post">

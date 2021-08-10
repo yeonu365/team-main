@@ -89,4 +89,8 @@
 	<delete id="delete">
 		DELETE FROM travelog WHERE bno = #{bno}
 	</delete>
+	
+	<delete id="removeByUserid">
+		DELETE FROM travelog WHERE writer = #{userid}
+	</delete>
 </mapper>
