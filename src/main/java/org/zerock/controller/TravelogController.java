@@ -49,15 +49,15 @@ public class TravelogController {
 	}
 	
 	@PostMapping("/insert")
-	public String insertSelectKey(TravelogVO travelog, RedirectAttributes rttr, MemberVO mvo) {
+	public String insertSelectKey(TravelogVO travelog, RedirectAttributes rttr, MemberVO member) {
 		log.info("travelog/insert executed");
 		service.insertSelectKey(travelog);
 		
 		//MemberVO mvo = new MemberVO();
-		//travelog.setWriterName(mvo.getUsername());
+		//String nwriter = mvo.getUsername();
 		
 		rttr.addFlashAttribute("result", travelog.getBno());
-		rttr.addFlashAttribute("newwriter", travelog.getWriterName());
+		rttr.addAttribute("newwriter", member.getUsername());
 		return "redirect:/travelog/list";
 	}
 	
