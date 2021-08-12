@@ -2,6 +2,7 @@ package org.zerock.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +16,11 @@ import org.zerock.domain.Criteria;
 import org.zerock.domain.MemberVO;
 import org.zerock.domain.PageDTO;
 import org.zerock.domain.TravelogVO;
+import org.zerock.service.MemberService;
 import org.zerock.service.TravelogService;
 
 import lombok.AllArgsConstructor;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Controller
@@ -46,9 +49,12 @@ public class TravelogController {
 	}
 	
 	@PostMapping("/insert")
-	public String insertSelectKey(TravelogVO travelog, RedirectAttributes rttr) {
+	public String insertSelectKey(TravelogVO travelog, RedirectAttributes rttr, MemberVO mvo) {
 		log.info("travelog/insert executed");
 		service.insertSelectKey(travelog);
+		
+		//MemberVO mvo = new MemberVO();
+		//travelog.setWriterName(mvo.getUsername());
 		
 		rttr.addFlashAttribute("result", travelog.getBno());
 		rttr.addFlashAttribute("newwriter", travelog.getWriterName());
