@@ -37,7 +37,27 @@ $(document).ready(function() {
 		}
 	});
 	});
+$("#like-button1").click(function() {
+	var operation = $(this).attr("data-operation");
+	var url = "${appRoot}/travelog/" + operation;
+	
+	$.post({
+		url: url,
+		success: function(data) {
+			$("#like-cnt1").text(data);
+			
+			if (operation == "like") {
+				$("#like-button1").attr("data-operation", "dislike");
+				$("#like-icon1").attr("data-prefix", "fas");
+			} else {
+				$("#like-button1").attr("data-operation", "like");
+				$("#like-icon1").attr("data-prefix", "far");				
+			}
+		}
+	});
+});
 </script>
+
 
 </head>
 <body>
@@ -85,7 +105,11 @@ $(document).ready(function() {
 		<input type="hidden" name="pageNum" value="${cri.pageNum }">
     	<input type="hidden" name="amount" value="${cri.amount }">
  -->
- 	
+ 		<button id="like-button1">
+ 			<i id="like-icon1" class="far fa-thumbs-up"></i>
+ 			<span id="like-cnt1">10</span>
+ 		</button>
+ 	<br><br>
 		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#reply-insert-modal">댓글 작성</button>
 		<c:if test="${pinfo.member.userid eq travelog.writer }">
 			<input style="float:right; margin-left:8px;" id="board-delete-btn1" class="btn btn-danger" type="button" value="게시글삭제"/>   

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.MemberVO;
@@ -89,4 +90,24 @@ public class TravelogController {
 		rttr.addAttribute("keyword", cri.getKeyword());
 		return "redirect:/travelog/list";
 	}
+	/*
+	@RestController
+	@PostMapping("/like")
+	public Integer like() {
+		like++;
+		
+		return like;
+	}
+		@RestController
+	@PostMapping("/dislike")
+	public Integer like() {
+		like--;
+		
+		return like;
+	}
+	
+	
+	
+	
+	*/
 }
