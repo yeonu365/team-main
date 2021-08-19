@@ -10,6 +10,9 @@
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp" %>
 <title>hello travelers♡</title>
 <style>
+.container {
+	background-color: WhiteSmoke;
+}
 #alert1 {
 	width: 380px;
 	margin: auto;
@@ -25,7 +28,6 @@ var userid = "${pinfo.member.userid}";
 </script>
 
 <script src="${appRoot }/resources/js/read.js"></script>
-
 
 <script>
 $(document).ready(function() {
@@ -62,17 +64,16 @@ $("#like-button1").click(function() {
 </head>
 <body>
 <nv:navbar></nv:navbar>
-<div class="row">
-	<div class="col-12">
-<div id="alert1" class="alert alert-info fade" role="alert"></div>
-</div>
-</div>
+
+	<div id="alert1" class="alert alert-info fade" role="alert"></div>
+	<h3 style="text-align:center;color: Tomato;">유럽에서</h3><br>
+	
 <div class="container">
-<h1>글보기</h1>
-<div class="row">
-	<div class="col-12">
-		<form id="for-delete" action="" method="post">
-		<input hidden name="bno" value="${travelog.bno }">
+<br>
+	<div class="row">
+		<div class="col-12">
+			<form id="for-delete" action="" method="post">
+				<input hidden name="bno" value="${travelog.bno }">
 			<div class="form-group">
 				<label for="input1">제목</label>
 				<input readonly id="input1" class="form-control" name="title" value="${travelog.title}">
@@ -101,10 +102,7 @@ $("#like-button1").click(function() {
 				<c:param name="type" value="${cri.type }"></c:param>
 				<c:param name="keyword" value="${cri.keyword }"></c:param>
 			</c:url>
-<!-- 			
-		<input type="hidden" name="pageNum" value="${cri.pageNum }">
-    	<input type="hidden" name="amount" value="${cri.amount }">
- -->
+
  		<button id="like-button1">
  			<i id="like-icon1" class="far fa-thumbs-up"></i>
  			<span id="like-cnt1">10</span>
@@ -114,13 +112,13 @@ $("#like-button1").click(function() {
 		<c:if test="${pinfo.member.userid eq travelog.writer }">
 			<input style="float:right; margin-left:8px;" id="board-delete-btn1" class="btn btn-danger" type="button" value="게시글삭제"/>   
 		</c:if>
-			<a style="float:right;" class="btn btn-dark" href="${listUrl }">목록으로 돌아가기</a>
+			<a style="float:right;" class="btn btn-outline-dark" href="${listUrl }">목록으로 돌아가기</a>
 		</form>
 		
 	</div>
 </div>	
 </div>
-<!-- 댓글 리스트 origin	
+
 <div class="container">
 	<div class="row">
 		<div class="col-12">
@@ -128,7 +126,7 @@ $("#like-button1").click(function() {
 		</div>
 	</div>
 </div>
- -->
+<!-- 댓글 리스트 origin	 -->
  <!--  댓글 리스트 얻기  -->
  
 <%-- 댓글 입력 모달 --%>

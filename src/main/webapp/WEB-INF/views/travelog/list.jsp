@@ -10,6 +10,10 @@
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp" %>
 <title>hello travelers♡</title>
 <style>
+ body {
+	background-color: MintCream;
+}
+
 a:link {
 	text-decoration: none;
 	color:black;
@@ -20,10 +24,6 @@ a:visited {
 a:hover {
 	color:hotpink;
 	}
-body {
-	background-image: url("../WEB-INF/images/theFirstDoor.jpg");
-}
-
 </style>
 <script>
 $(document).ready(function() {
@@ -41,12 +41,12 @@ $(document).ready(function() {
 <body>
 <nv:navbar></nv:navbar>
 <div class="container">
-
- 	<br><h3 style="text-align:center;color:DodgerBlue;">여행 기억 (여행 기록)</h3><br>
+<br><br><br><br>
+ 	<h3 style="text-align:center;">여행 기억</h3><br>
 
 	<table class="table table-hover">
 		<thead>
-			<tr class="table-secondary">
+			<tr>
 				<th scope="col">글번호</th>
 				<th scope="col">제목</th>
 				<th scope="col">방문도시</th>
@@ -59,19 +59,18 @@ $(document).ready(function() {
 			<c:forEach items="${list }" var="travelog">
 			<tr>
 				<td>${travelog.bno }</td>
+					<c:url value="/travelog/read" var="readUrl">
+						<c:param name="bno" value="${travelog.bno }"></c:param>
+						<c:param name="pageNum" value="${pageMaker.cri.pageNum }"></c:param>
+						<c:param name="amount" value="${pageMaker.cri.amount }"></c:param>
+						<c:param name="type" value="${pageMaker.cri.type }"></c:param>
+						<c:param name="keyword" value="${pageMaker.cri.keyword }"></c:param>
+					</c:url>
 				
-				<c:url value="/travelog/read" var="readUrl">
-					<c:param name="bno" value="${travelog.bno }"></c:param>
-					<c:param name="pageNum" value="${pageMaker.cri.pageNum }"></c:param>
-					<c:param name="amount" value="${pageMaker.cri.amount }"></c:param>
-					<c:param name="type" value="${pageMaker.cri.type }"></c:param>
-					<c:param name="keyword" value="${pageMaker.cri.keyword }"></c:param>
-				</c:url>
-				
-				<td><a href="${readUrl }">${travelog.title }
-				<c:if test="${travelog.replyCnt > 0 }">[${travelog.replyCnt }]
-				</c:if>
+				<td><a href="${readUrl }" target="_blank">${travelog.title }
+					<c:if test="${travelog.replyCnt > 0 }">[${travelog.replyCnt }]</c:if>
 				</a></td>
+				
 				<td>${travelog.city }</td>
 				<td>${travelog.company }</td>
 				<td>${travelog.writerName }</td>
@@ -82,6 +81,7 @@ $(document).ready(function() {
 			</c:forEach>
 		</tbody>
 	</table>
+	
 </div>
 <!--  pagenation -->
 <nav aria-label="Page navigation example">
@@ -125,7 +125,9 @@ $(document).ready(function() {
         </button>
       </div>
       <div class="modal-body">
-		<%-- Travelog Controller의 insertSelectKey() 수정--%>
+		<%-- Travelog Controller의 insertSelectKey() 수정
+		<p>${list.writerName } 님의 여행기가 등록 되었습니다.</p>
+		--%>
     	<p>${pinfo.member.username } 님의 여행기가 등록 되었습니다.</p>
       </div>
       <div class="modal-footer">

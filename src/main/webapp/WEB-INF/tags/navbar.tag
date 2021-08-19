@@ -48,11 +48,11 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="${listUrl }">여행기</a>
+        <a class="nav-link" href="${listUrl }">여행ㄱ</a>
       </li>
    	<sec:authorize access="isAuthenticated()">
       <li class="nav-item">
-        <a class="nav-link" href="${insertUrl }">나의 여행기</a>
+        <a class="nav-link" href="${insertUrl }">나의ㄱ</a>
       </li>
    	</sec:authorize>
   

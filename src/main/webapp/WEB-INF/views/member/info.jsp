@@ -11,7 +11,9 @@
 
 <title>hello travelers♡</title>
 <style>
-
+.container {
+	background-color: lavenderblush;
+}
 #alert1 {
 	width: 380px;
 	margin: auto;
@@ -81,17 +83,20 @@ $(function() {
 </head>
 <body>
 <nv:navbar></nv:navbar>
+<br><br><br><br>
+	<h3 style="text-align:center;color:Sienna;">내 정보</h3><br>
 <div class="container">
+<br>
+		<div class="row">
+		<div class="col-12">
+	
 	<c:if test="${param.status == 'success' }">
 		<div id="alert1" class="alert alert-primary" role="alert">♡회원 정보를 수정하였습니다.♡</div>
 	</c:if>
 		<c:if test="${param.status == 'error' }">
 		<div id="alert1" class="alert alert-danger" role="alert">회원 정보를 수정할 수 없습니다.</div>
 	</c:if>
-	
-	<h1> 회원 정보 </h1>
-	<div class="row">
-		<div class="col-12">
+
 			<form id="member-info-form1" action="${appRoot }/member/modify" method="post">
 				<div class="form-group">
 					<label for="signup-input1">아이디</label>
@@ -112,7 +117,8 @@ $(function() {
 					<input value="${member.username }" type="text" class="form-control" id="signup-input3" name="username">
 				</div>
 				<button disabled="disabled" type="submit" class="btn btn-primary" id="member-info-modify-btn1">정보 수정</button>
-				<button type="button" class="btn btn-danger" id="member-info-remove-btn1">회원 탈퇴</button>
+				<button type="button" class="btn btn-outline-danger" id="member-info-remove-btn1">회원 탈퇴</button>
+				<br><br>
 			</form>
 		</div>
 	</div>

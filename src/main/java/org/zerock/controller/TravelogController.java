@@ -50,15 +50,12 @@ public class TravelogController {
 	}
 	
 	@PostMapping("/insert")
-	public String insertSelectKey(TravelogVO travelog, RedirectAttributes rttr, MemberVO member) {
+	public String insertSelectKey(TravelogVO travelog, RedirectAttributes rttr) {
 		log.info("travelog/insert executed");
 		service.insertSelectKey(travelog);
-		
-		//MemberVO mvo = new MemberVO();
-		//String nwriter = mvo.getUsername();
-		
+	
 		rttr.addFlashAttribute("result", travelog.getBno());
-		rttr.addAttribute("newwriter", member.getUsername());
+
 		return "redirect:/travelog/list";
 	}
 	
@@ -80,7 +77,7 @@ public class TravelogController {
 		log.info("travelog/delete executed");
 		boolean success = service.delete(bno);
 		if (success) {
-			rttr.addAttribute("result", "success");
+			rttr.addFlashAttribute("result", "success");
 			rttr.addFlashAttribute("messageTitle", "삭제 성공");
 			rttr.addFlashAttribute("messageBody", "삭제 되었습니다.");
 		}

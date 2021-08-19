@@ -10,18 +10,18 @@
 
 <title>hello travelers♡</title>
 
-<style type="text/css">
-body {
-	background-img: url("/images/topcloud1.jpg");
+<style>
+.container {
+	background-color: Azure;
 }
-
 </style>
 </head>
 <body>
 <nv:navbar></nv:navbar>
+<br><br><br><br>
+	<h3 style="text-align:center;color:DodgerBlue;">${pinfo.member.username }님의 유럽기억</h3><br>
 <div class="container">
 <br>
-<h3 style="text-align:center;color:skyblue;">${pinfo.member.username }님의 여행기</h3><br>
 <div class="row">
 	<div class="col-12">
 		<form action="${appRoot }/travelog/insert" method="post">
@@ -38,7 +38,7 @@ body {
 			</div>
 			<div class="form-group">
 				<label for="textarea1">내용</label>
-				<textarea rows="10" id="textarea1" class="form-control" name="content"></textarea>
+				<textarea rows="8" id="textarea1" class="form-control" name="content"></textarea>
 			</div>
 			<div class="form-group">
 				<label for="input2">작성자</label>
@@ -46,6 +46,9 @@ body {
 				<input value="${pinfo.member.username }" class="form-control" readonly>
 			</div>
 			<input class="btn btn-primary" type="submit" value="글올리기" />
+			<button type="reset" class="btn btn-outline-primary"> 다시쓰기 </button> 
+			<a style="float:right;" class="btn btn-outline-dark" href="${appRoot }/travelog/list">목록으로 돌아가기</a>
+			<br><br>
 		</form>
 	</div>
 </div>
