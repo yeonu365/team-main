@@ -9,11 +9,19 @@
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp" %>
 
 <title>hello travelers♡</title>
+
+<style type="text/css">
+body {
+	background-img: url("/images/topcloud1.jpg");
+}
+
+</style>
 </head>
 <body>
 <nv:navbar></nv:navbar>
 <div class="container">
-<h1>글쓰기</h1>
+<br>
+<h3 style="text-align:center;color:skyblue;">${pinfo.member.username }님의 여행기</h3><br>
 <div class="row">
 	<div class="col-12">
 		<form action="${appRoot }/travelog/insert" method="post">
@@ -30,7 +38,7 @@
 			</div>
 			<div class="form-group">
 				<label for="textarea1">내용</label>
-				<textarea id="textarea1" class="form-control" name="content"></textarea>
+				<textarea rows="10" id="textarea1" class="form-control" name="content"></textarea>
 			</div>
 			<div class="form-group">
 				<label for="input2">작성자</label>

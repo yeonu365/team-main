@@ -86,7 +86,7 @@ $(function() {
 
 <h1>회원가입</h1>
 	<div class="row">
-		<div class="col-12>">
+		<div class="col-1">
 			<form action="${appRoot }/member/signup" method="post">
 			<div class="form-group">
 				<label for="signup-input1">아이디</label>
@@ -111,7 +111,7 @@ $(function() {
 				<label for="signup-input3">필명(활동명)</label>
 				<input type="text" class="form-control" id="signup-input3" name="username">
 			</div>
-			<button disabled="disabled" type="submit" class="btn btn-primary" id="signup-btn1">회원 가입</button>
+			<button disabled type="submit" class="btn btn-primary" id="signup-btn1">회원 가입</button>
 			</form>
 		</div>
 	</div>

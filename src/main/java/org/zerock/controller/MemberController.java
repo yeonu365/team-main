@@ -38,7 +38,7 @@ public class MemberController {
 		
 	}
 	
-	@RequestMapping("/signup")
+	@GetMapping("/signup")
 	public void signup(Criteria cri) {
 	}
 	

@@ -10,6 +10,15 @@
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp" %>
 
 <title>hello travelers♡</title>
+<style>
+
+#alert1 {
+	width: 380px;
+	margin: auto;
+	padding: 50px 20px;
+	text-align: center;
+}
+</style>
 <script type="text/javascript">
 $(function() {
 	var oldPasswordModal = $("#old-password-modal");
@@ -74,7 +83,7 @@ $(function() {
 <nv:navbar></nv:navbar>
 <div class="container">
 	<c:if test="${param.status == 'success' }">
-		<div id="alert1" class="alert alert-primary" role="alert">회원 정보를 수정하였습니다.</div>
+		<div id="alert1" class="alert alert-primary" role="alert">♡회원 정보를 수정하였습니다.♡</div>
 	</c:if>
 		<c:if test="${param.status == 'error' }">
 		<div id="alert1" class="alert alert-danger" role="alert">회원 정보를 수정할 수 없습니다.</div>

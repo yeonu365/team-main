@@ -20,6 +20,10 @@ a:visited {
 a:hover {
 	color:hotpink;
 	}
+body {
+	background-image: url("../WEB-INF/images/theFirstDoor.jpg");
+}
+
 </style>
 <script>
 $(document).ready(function() {
@@ -37,8 +41,8 @@ $(document).ready(function() {
 <body>
 <nv:navbar></nv:navbar>
 <div class="container">
-	
- 	<h1 style="text-align:center;">글 목록</h1>
+
+ 	<br><h3 style="text-align:center;color:DodgerBlue;">여행 기억 (여행 기록)</h3><br>
 
 	<table class="table table-hover">
 		<thead>
@@ -103,7 +107,6 @@ $(document).ready(function() {
 		<input name="keyword" value="${cri.keyword }" />
 	</form>
 </div>
- 	<h4 style="text-align:right;">글쓰기</h4>
 
 <!-- 글쓰고 list 로 redirect 될때 작동하는 modal -->
 <c:if test="${not empty result }">
@@ -123,7 +126,7 @@ $(document).ready(function() {
       </div>
       <div class="modal-body">
 		<%-- Travelog Controller의 insertSelectKey() 수정--%>
-    	<p>${newwriter } 님의 여행기가 등록 되었습니다.</p>
+    	<p>${pinfo.member.username } 님의 여행기가 등록 되었습니다.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>

@@ -119,8 +119,8 @@ $("#like-button1").click(function() {
 		
 	</div>
 </div>	
-	
 </div>
+<!-- 댓글 리스트 origin	
 <div class="container">
 	<div class="row">
 		<div class="col-12">
@@ -128,6 +128,9 @@ $("#like-button1").click(function() {
 		</div>
 	</div>
 </div>
+ -->
+ <!--  댓글 리스트 얻기  -->
+ 
 <%-- 댓글 입력 모달 --%>
 <div class="modal fade" id="reply-insert-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
