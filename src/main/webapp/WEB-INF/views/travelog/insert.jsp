@@ -19,7 +19,7 @@
 <body>
 <nv:navbar></nv:navbar>
 <br><br><br><br>
-	<h3 style="text-align:center;color:DodgerBlue;">${pinfo.member.username }님의 유럽기억</h3><br>
+	<h3 style="text-align:center;color:DodgerBlue; font-family: monospace;">${pinfo.member.username }님의 유럽기억</h3><br>
 <div class="container">
 <br>
 <div class="row">

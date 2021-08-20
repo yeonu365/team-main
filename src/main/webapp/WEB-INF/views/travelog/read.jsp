@@ -66,7 +66,7 @@ $("#like-button1").click(function() {
 <nv:navbar></nv:navbar>
 
 	<div id="alert1" class="alert alert-info fade" role="alert"></div>
-	<h3 style="text-align:center;color: Tomato;">유럽에서</h3><br>
+	<h3 style="text-align:center;color: Tomato; font-family: monospace;">유럽에서</h3><br>
 	
 <div class="container">
 <br>

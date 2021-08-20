@@ -84,8 +84,8 @@ $(function() {
 <body>
 <nv:navbar></nv:navbar>
 <br><br><br><br>
-	<h3 style="text-align:center;color:Sienna;">내 정보</h3><br>
-<div class="container">
+	<h3 style="text-align:center; color:Sienna; font-family: monospace;">내 정보</h3><br>
+<div class="container" class="rounded-pill">
 <br>
 		<div class="row">
 		<div class="col-12">
@@ -118,6 +118,7 @@ $(function() {
 				</div>
 				<button disabled="disabled" type="submit" class="btn btn-primary" id="member-info-modify-btn1">정보 수정</button>
 				<button type="button" class="btn btn-outline-danger" id="member-info-remove-btn1">회원 탈퇴</button>
+				<a style="float:right;" class="btn btn-outline-dark" href="${appRoot }/travelog/list">목록으로 돌아가기</a>
 				<br><br>
 			</form>
 		</div>

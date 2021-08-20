@@ -10,8 +10,9 @@
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp" %>
 <title>hello travelers♡</title>
 <style>
- body {
+body {
 	background-color: MintCream;
+	font-family: sans-serif;
 }
 
 a:link {
@@ -42,7 +43,7 @@ $(document).ready(function() {
 <nv:navbar></nv:navbar>
 <div class="container">
 <br><br><br><br>
- 	<h3 style="text-align:center;">여행 기억</h3><br>
+ 	<h3 style="text-align:center; font-family: monospace;">여행 기억</h3><br>
 
 	<table class="table table-hover">
 		<thead>
@@ -61,10 +62,10 @@ $(document).ready(function() {
 				<td>${travelog.bno }</td>
 					<c:url value="/travelog/read" var="readUrl">
 						<c:param name="bno" value="${travelog.bno }"></c:param>
-						<c:param name="pageNum" value="${pageMaker.cri.pageNum }"></c:param>
-						<c:param name="amount" value="${pageMaker.cri.amount }"></c:param>
-						<c:param name="type" value="${pageMaker.cri.type }"></c:param>
-						<c:param name="keyword" value="${pageMaker.cri.keyword }"></c:param>
+						<c:param name="pageNum" value="${cri.pageNum }"></c:param>
+						<c:param name="amount" value="${cri.amount }"></c:param>
+						<c:param name="type" value="${cri.type }"></c:param>
+						<c:param name="keyword" value="${cri.keyword }"></c:param>
 					</c:url>
 				
 				<td><a href="${readUrl }" target="_blank">${travelog.title }
