@@ -12,14 +12,18 @@
 
 <style>
 body {
-	background-color: Turquoise;
+	background-image: url("${appRoot}/resources/images/topCloud1.jpg");
+	background-size: 100%;
 }
-.main {
-	position: absolute;
-	align-items: center;
-	justify-content: center;
+.tom {
+	color: blue;
+	position: absolute; left: 50%; top: 68%;
+	transform: translate(-50%, -50%); text-align: center;
+	font-family: monospace;
 }
-
+#signup, #login {
+	text-color: black;
+}
 a:link {
 	text-decoration: none;
 }
@@ -29,18 +33,18 @@ a: visited {
 a: hover {
 	color: hotpink;
 }
-/* 배경화면으로 이미지 넣기?? 폴더를 맞게 넣었나?
- <img src="../images/theFirstDoor.jsp" alt="theFirstDoor">
-*/
+
 </style>
 
 </head>
 <body>
 
-<div class="main">
-그때, 그순간, 하나뿐인 여행.
-<span id="signup"><a href="/member/signup">티켓팅(회원가입)</a></span>
-<span id="login"><a href="/member/login">출발(로그인)</a></span>
+<div class="tom">
+
+	<h1>그 때, 그 순간, 그 여행.</h1><br>
+
+<span id="signup"><a href="${appRoot }/member/signup">티켓팅(회원가입)</a></span>
+<span id="login"><a href="${appRoot }/member/login">출발(로그인)</a></span>
 </div>
 	
 </body>

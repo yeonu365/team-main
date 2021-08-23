@@ -32,6 +32,11 @@ public class TravelogController {
 
 	private TravelogService service;
 	
+	@GetMapping("/")
+	public String ineurope() {
+		return "/inEurope";
+	}
+	
 	@GetMapping("/list")
 	public void list(Model model, @ModelAttribute("cri") Criteria cri) {
 		log.info("travelog/list executed");

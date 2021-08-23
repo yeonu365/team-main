@@ -34,9 +34,11 @@ $(function() {
 					if(data == "success") {
 						console.log("사용 가능한 아이디");
 						messageElem.text("사용 가능한 아이디 입니다.");
+						canUseId = true;
 					} else if (data == "exist") {
 						console.log("사용 불가능한 아이디");
 						messageElem.text("이미 있는 아이디 입니다.");
+						canUseId = false;
 					}
 					toggleEnableSubmit();
 				},
@@ -79,12 +81,14 @@ $(function() {
 </head>
 <body>
 <nv:navbar></nv:navbar>
+<br><br><br><br>
+	<h3 style="text-align:center; color:Sienna; font-family: monospace;">회원가입</h3><br>
+
 <div class="container">
 <c:if test="${not empty param.error }">
 	<div id="alert1" class="alert alert-danger" role="alert">회원 가입에 실패 하였습니다.</div>
 </c:if>
 
-<h1>회원가입</h1>
 	<div class="row">
 		<div class="col-12">
 			<form action="${appRoot }/member/signup" method="post">

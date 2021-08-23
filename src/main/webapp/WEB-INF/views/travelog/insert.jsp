@@ -15,6 +15,26 @@
 	background-color: Azure;
 }
 </style>
+
+<script>
+$(document).ready(function() {
+	$("#submit-btn1").click(function(e) {
+		e.preventDefault();
+		
+		var title = $("#input1").val().trim();
+		var city = $("#input3").val().trim();
+		var company = $("#input4").val().trim();
+		var content = $("#textarea1").val().trim();
+		
+		if (title && city && company && content) {
+			$("#insert-form1").submit();
+		} else {
+			alert("제목, 방문도시, 이용회사, 내용을 모두 입력하세요")
+		}
+	});
+});
+</script>
+
 </head>
 <body>
 <nv:navbar></nv:navbar>
@@ -24,7 +44,7 @@
 <br>
 <div class="row">
 	<div class="col-12">
-		<form action="${appRoot }/travelog/insert" method="post">
+		<form id="insert-form1" action="${appRoot }/travelog/insert" method="post">
 			<div class="form-group">
 				<label for="input1">제목</label>
 				<input id="input1" class="form-control" name="title">
@@ -45,7 +65,7 @@
 				<input id="input2" hidden value="${pinfo.member.userid }" readonly class="form-control" name="writer">
 				<input value="${pinfo.member.username }" class="form-control" readonly>
 			</div>
-			<input class="btn btn-primary" type="submit" value="글올리기" />
+			<input id="submit-btn1" class="btn btn-primary" type="submit" value="글올리기" />
 			<button type="reset" class="btn btn-outline-primary"> 다시쓰기 </button> 
 			<a style="float:right;" class="btn btn-outline-dark" href="${appRoot }/travelog/list">목록으로 돌아가기</a>
 			<br><br>

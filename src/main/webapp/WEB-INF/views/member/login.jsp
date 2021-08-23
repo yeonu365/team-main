@@ -10,13 +10,21 @@
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp" %>
 
 <title>hello travelers♡</title>
+<style>
+body {
+	background-image: url("${appRoot}/resources/images/topCloud1.jpg");
+	background-size: 100%;
+}
+</style>
 </head>
 <body>
 <nv:navbar></nv:navbar>
+<br><br><br><br>
+	<h3 style="text-align:center; color:Sienna; font-family: monospace;">로그인</h3><br>
+
 <div class="container">
-	<div class="row justify-content-center">
+	<div class="row">
 	<div class="col-md-12 col-6">
-		<h1>로그인</h1>
 		<form action="${appRoot }/login" method="post">
 			<div class="form-group">
 				<label for="input1">아이디</label>
