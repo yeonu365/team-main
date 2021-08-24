@@ -11,10 +11,7 @@
 
 <title>hello travelers♡</title>
 <style>
-body {
-	background-image: url("${appRoot}/resources/images/topCloud1.jpg");
-	background-size: 100%;
-}
+
 </style>
 </head>
 <body>

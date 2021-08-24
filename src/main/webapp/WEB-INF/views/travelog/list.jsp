@@ -24,7 +24,7 @@ a:visited {
 }
 a:hover {
 	color:hotpink;
-	}
+}
 </style>
 <script>
 $(document).ready(function() {
@@ -38,6 +38,7 @@ $(document).ready(function() {
 	});
 });
 </script>
+
 </head>
 <body>
 <nv:navbar></nv:navbar>
@@ -68,14 +69,14 @@ $(document).ready(function() {
 						<c:param name="keyword" value="${cri.keyword }"></c:param>
 					</c:url>
 				
-				<td><a href="${readUrl }" target="_blank">${travelog.title }
+				<td class="ellipsis"><a href="${readUrl }" target="_blank">${travelog.title }
 					<c:if test="${travelog.replyCnt > 0 }">[${travelog.replyCnt }]</c:if>
 				</a></td>
 				
-				<td>${travelog.city }</td>
-				<td>${travelog.company }</td>
-				<td>${travelog.writerName }</td>
-				<td>
+				<td class="ellipsis">${travelog.city }</td>
+				<td class="ellipsis">${travelog.company }</td>
+				<td class="ellipsis">${travelog.writerName }</td>
+				<td class="ellipsis">
 					<fmt:formatDate pattern="yyyy-MM-dd" value="${travelog.regdate }" />
 				</td>
 			</tr>
