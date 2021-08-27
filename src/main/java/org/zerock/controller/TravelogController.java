@@ -32,10 +32,11 @@ public class TravelogController {
 
 	private TravelogService service;
 	
-	@GetMapping("/")
-	public String ineurope() {
-		return "/inEurope";
-	}
+//	@GetMapping("/")
+//	public String ineurope() {
+//		return "/inEurope";
+//	}
+// HomeController 에서 해결.
 	
 	@GetMapping("/list")
 	public void list(Model model, @ModelAttribute("cri") Criteria cri) {
@@ -92,24 +93,20 @@ public class TravelogController {
 		rttr.addAttribute("keyword", cri.getKeyword());
 		return "redirect:/travelog/list";
 	}
-	/*
-	@RestController
+/*
 	@PostMapping("/like")
 	public Integer like() {
 		like++;
 		
 		return like;
 	}
-		@RestController
+	
 	@PostMapping("/dislike")
-	public Integer like() {
+	public Integer dislike() {
 		like--;
 		
 		return like;
 	}
+*/
 	
-	
-	
-	
-	*/
 }

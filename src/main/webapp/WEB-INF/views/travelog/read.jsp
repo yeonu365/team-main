@@ -39,6 +39,7 @@ $(document).ready(function() {
 		}
 	});
 	});
+	
 $("#like-button1").click(function() {
 	var operation = $(this).attr("data-operation");
 	var url = "${appRoot}/travelog/" + operation;
@@ -102,12 +103,14 @@ $("#like-button1").click(function() {
 				<c:param name="type" value="${cri.type }"></c:param>
 				<c:param name="keyword" value="${cri.keyword }"></c:param>
 			</c:url>
-
+<!--  좋아요기능 
  		<button id="like-button1">
  			<i id="like-icon1" class="far fa-thumbs-up"></i>
- 			<span id="like-cnt1">10</span>
+ 			<span id="like-cnt1">1</span>
  		</button>
- 	<br><br>
+ 		<br><br>
+-->
+ 	
 		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#reply-insert-modal">댓글 작성</button>
 		<c:if test="${pinfo.member.userid eq travelog.writer }">
 			<input style="float:right; margin-left:8px;" id="board-delete-btn1" class="btn btn-danger" type="button" value="게시글삭제"/>   
