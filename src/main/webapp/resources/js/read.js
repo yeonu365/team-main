@@ -8,7 +8,7 @@ $(function() {
 			url: appRoot + "/replies/" + rno,
 			success: function(reply) {
 				$("#reply-rno-input2").val(reply.rno);
-				$("#reply-reply-textarea2").text(reply.reply);
+				$("#reply-reply-textarea2").val(reply.reply);
 				$("#reply-replyer-input2").val(reply.replyer);
 				$("#reply-replyerName-input2").val(reply.replyerName);
 				
@@ -36,13 +36,13 @@ $(function() {
 		
 		for (var reply of list) {
 			var replyHTML = `
-                <li class="media" id="reply${reply.rno}" data-rno="${reply.rno}">
+                <li class="list-group-item" id="reply${reply.rno}" data-rno="${reply.rno}">
                     <div class="media-body">
-                        <p>${reply.reply}</p>
-                        <h5>${reply.replyerName}</h5>
-                        <small>${new Date(reply.replyDate).toISOString().split("T")[0]}</small>
+                        <h4 style="color:DarkTurquoise;">${reply.reply}</h4>
+                        <span style="color:darkCyan; text-align:right;"><p>${reply.replyerName}
+                        ${new Date(reply.replyDate).toISOString().split("T")[0]}</p></span>
                     </div>        
-                </li>`;
+                </li><br>`;
             var replyComponent = $(replyHTML).click(function() {
                 showModifyModal($(this).attr("data-rno"));
             });

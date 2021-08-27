@@ -110,8 +110,16 @@ $("#like-button1").click(function() {
  		</button>
  		<br><br>
 -->
+ 	<script>
+ 	$(function() {
+	 	$("#reply-insert-modal-trigger").click(function(){
+	 		$("#reply-reply-textarea1").val("");
+	 		$("#reply-insert-modal").modal("show");
+	 	})
+ 	})
  	
-		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#reply-insert-modal">댓글 작성</button>
+ 	</script>
+		<button type="button" class="btn btn-info" id="reply-insert-modal-trigger">댓글 작성</button>
 		<c:if test="${pinfo.member.userid eq travelog.writer }">
 			<input style="float:right; margin-left:8px;" id="board-delete-btn1" class="btn btn-danger" type="button" value="게시글삭제"/>   
 		</c:if>
@@ -121,16 +129,15 @@ $("#like-button1").click(function() {
 	</div>
 </div>	
 </div>
-
+<!-- 댓글 리스트 origin	 -->
 <div class="container">
 	<div class="row">
 		<div class="col-12">
-			<ul class="list-unstyped" id="reply-list-container"></ul>
+		<br>
+			<ul class="list-group" id="reply-list-container"></ul>
 		</div>
 	</div>
 </div>
-<!-- 댓글 리스트 origin	 -->
- <!--  댓글 리스트 얻기  -->
  
 <%-- 댓글 입력 모달 --%>
 <div class="modal fade" id="reply-insert-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -143,7 +150,7 @@ $("#like-button1").click(function() {
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form id="reply-insert-modal-form">
        	<input type="text" value="${travelog.bno }" readonly="readonly" id="reply-bno-input1" hidden>
           <div class="form-group">
             <label for="message-text" class="col-form-label">댓글</label>
