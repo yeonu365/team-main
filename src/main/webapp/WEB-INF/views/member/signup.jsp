@@ -10,6 +10,20 @@
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp" %>
 
 <title>hello travelers♡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+
+<style>
+body {
+	background-image: url("${appRoot}/resources/images/fireworks1.jpg");
+	background-size: 100%;
+	font-family: 'Nanum Brush Script', cursive;
+	color: white;
+	font-size: 1.8em;
+}
+</style>
+
 <script type="text/javascript">
 $(function() {
 	var canUseId = false;
@@ -82,7 +96,7 @@ $(function() {
 <body>
 <nv:navbar></nv:navbar>
 <br><br><br><br>
-	<h3 style="text-align:center; color:Sienna; font-family: monospace;">회원가입</h3><br>
+	<h1 style="text-align:center;">회원가입</h1><br>
 
 <div class="container">
 <c:if test="${not empty param.error }">
@@ -119,7 +133,6 @@ $(function() {
 			</form>
 		</div>
 	</div>
-	
 </div>
 </body>
 </html>

@@ -9,10 +9,16 @@
 <head>
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp" %>
 <title>hello travelers♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+
 <style>
 body {
 	background-color: MintCream;
-	font-family: sans-serif;
+	font-family: 'Nanum Brush Script', cursive;
+	font-size: 1.5em;
 }
 
 a:link {
@@ -44,7 +50,7 @@ $(document).ready(function() {
 <nv:navbar></nv:navbar>
 <div class="container">
 <br><br><br><br>
- 	<h3 style="text-align:center; font-family: monospace;">여행 기억</h3><br>
+ 	<h1 style="text-align:center;">여행 기억,,</h1><br>
 
 	<table class="table table-hover">
 		<thead>
